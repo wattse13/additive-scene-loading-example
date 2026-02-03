@@ -2,8 +2,6 @@
 
 I developed these scripts to handle scene transitions for a Unity WebGL project that utilizes an additive scene architecture.
 
-I developed these scripts to handle scene transitions for a Unity WebGL project that utilizes an additive scene architecture
-
 Please note, that some of these scripts, `GameFlowManager.cs` in particular, have been shortened or may reference scripts that are not present in this repo. This was done on purpose to make the example code a bit more concise.
 
 
