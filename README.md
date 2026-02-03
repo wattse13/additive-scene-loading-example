@@ -28,7 +28,7 @@ Instances of `LoadTransition` are created by `GameFlowManager`. When passed into
 
 This script's only function is to use a coroutine to step through the loading/unloading process. It takes an instance of `LoadTranstion` as an argument. There are four points in the load/unload process when events can be invoked. They are:
 - Before a scene is unloaded
-- After a scene is unloaded
+- Before a scene is loaded
 - Before assets are unloaded
 - After assets are unloaded
 
