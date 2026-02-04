@@ -16,16 +16,16 @@ public class GameFlowManager : MonoBehaviour
     private LoadingBarController loadBarController;
     private PlayerSpawnController playerSpawnController;
     private PlayerSpawnData playerSpawnData;
-    [SerializeField] LoadFlowController loadFlowController; // drag/drop reference
-    [SerializeField] WeekManager weekManager; // drag/drop reference
+    [SerializeField] LoadFlowController loadFlowController;
+    [SerializeField] WeekManager weekManager;
 
-    [SerializeField] private SaveSystem saveSystem; // drag/drop reference
-    [SerializeField] private SceneState sceneState; // drag/drop reference
-    [SerializeField] private InputReader inputReader; // drag/drop reference
+    [SerializeField] private SaveSystem saveSystem;
+    [SerializeField] private SceneState sceneState;
+    [SerializeField] private InputReader inputReader;
 
-    [SerializeField] private CursorLockChannelSO cursorLockRequest; // drag/drop reference
-    [SerializeField] private TeleportChannelSO teleportChannel; // drag/drop reference
-    [SerializeField] private SaveEventChannelSO saveChannel; // drag/drop reference
+    [SerializeField] private CursorLockChannelSO cursorLockRequest;
+    [SerializeField] private TeleportChannelSO teleportChannel;
+    [SerializeField] private SaveEventChannelSO saveChannel;
 
 
     public static Action OnCreateDialogueTabs;
@@ -110,40 +110,40 @@ public class GameFlowManager : MonoBehaviour
     {
         saveSystem.ResetData();
     }
-    // Save
+
     public void SaveGame() => saveChannel.RequestSave();
-    // Save
+    
     public void RequestCreateDialogueTabs() => OnCreateDialogueTabs?.Invoke();
-    // Save
+    
     public void CreateLocationData() => OnCreateLocationData?.Invoke();
-    // Save
+    
     public void CreatePlayerSpawnData()
     {
         playerSpawnData = new PlayerSpawnData();
         playerSpawnController = new PlayerSpawnController(sceneState, playerSpawnData);
     }
-    // Save
+    
     public void UpdateSceneState() => sceneState.UpdateSceneState();
-    // Save
+    
     public void OpenLoadBar() => loadBarController.OpenLoadingBar();
-    // Save
+    
     public void CloseLoadBar() => loadBarController.CloseLoadingBar();
-    // Save
+    
     public void UnlockCursorRequest() => cursorLockRequest.RaiseCursorLockRequest(true); 
-    // Save
+    
     public void LockCursorRequest() => cursorLockRequest.RaiseCursorLockRequest(false);
-    // Save
+    
     public void RequestCampusLoopStart() => OnCampusLoopStart?.Invoke();
     public void RequestCampusLoopEnd() => OnCampusLoopEnd?.Invoke();
-    // Save
+    
     public void RequestResetPlayerRotation() => OnRequestResetPlayerRotation?.Invoke();
-    // Save
+    
     public void RequestStatBarInitialize() => OnStatBarInitalize?.Invoke();
-    // Save
+    
     public void RequestInitStatValueManager() => OnRequestInitializeStatValueManager?.Invoke();
-    // Save
+    
     public void RequestSavePlayerPosition() => OnPositionSaveRequest?.Invoke();
-    // Save 
+     
     public void ReturnPlayerStartLocation() 
     {
         PlayerSpawns spawnData = playerSpawnController.ReturnSpawnPoint(PlayerSpawnLocations.MainCampusInitial);
@@ -153,29 +153,29 @@ public class GameFlowManager : MonoBehaviour
         teleportChannel.RaiseTeleport(targetLocation, targetRotation);
     } 
 
-    // Save
+    
     public void RequestSetCameras() => OnSetCamerasRequest?.Invoke();
-    // Save
+    
     public void RequestSetSun() => OnSetSun?.Invoke();
-    // Save
+    
     public void RequestSettingsInitialize() => OnSettingsInitialize?.Invoke();
-    // Save
+    
     public void RequestCreateFirstWeek() => OnRequestCreateFirstWeek?.Invoke();
     public void RequestSetWeek() => OnRequestSetWeek?.Invoke(weekManager.CurrentWeek);
-    // Save
+    
     public void RequestExteriorLocations() => OnLocationsLoaded?.Invoke(Buildings.Exterior);
-    // Save
+    
     public void RequestSetWorldMapRefPoints() => OnRequestSetWorldMapRefPoints?.Invoke();
-    // Save
+    
     public void RequestPlayerCharList() => OnRequestPlayerCharsList?.Invoke();
-    // Save
+    
     public void DisableMovementInputs() => inputReader.DisableMovement();
-    // Save
+    
     public void SwitchToPlayerInputs() => inputReader.SwitchInputMap(inputReader.InputActionAsset.Player);
-    // Save
+    
     public void SwitchToUIInputs() => inputReader.SwitchInputMap(inputReader.InputActionAsset.UI);
-    // Save
+    
     public void RequestCreateNPCSpriteMap() => OnCreateNPCSpriteMap?.Invoke();
-    // Save
+    
     public void InitializeSkybox() => OnSkyboxInit?.Invoke();
 }
